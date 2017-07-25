@@ -1,0 +1,12 @@
+{
+    "name": "ideaspot/deko_pay_api",
+    "authors": [
+        {
+            "name": "ideaspot",
+            "email": "info@ideaspot.pl"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"IdeaSpot\\DekoPayApi\\": "src/"}
+    }
+}
