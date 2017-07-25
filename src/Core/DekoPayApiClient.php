@@ -59,7 +59,6 @@ class DekoPayApiClient
         $sender->request();
 
         if ($sender->isFailed()) {
-            echo $sender->getError() . $sender->getErrorCode();
             throw new \Exception($sender->getError(), $sender->getErrorCode());
         }
 

@@ -40,8 +40,6 @@ class Sender
         $this->errorInfo = curl_error($this->curlSession);
         curl_close($this->curlSession);
 
-        var_dump($this);
-
         return $this->response;
     }
 
