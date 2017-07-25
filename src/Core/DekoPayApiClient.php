@@ -53,6 +53,7 @@ class DekoPayApiClient
     {
         $parameters = $request->getParameters();
         $parameters['Identification[api_key]'] = $this->apiKey;
+        $parameters['api_key'] = $this->apiKey;
 
         $sender = new Sender($this->interface, $parameters);
         $sender->request();

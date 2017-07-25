@@ -11,6 +11,14 @@ class StatusResponse
     private $creditApplicationId;
     private $decision;
 
+    const STATUS_DECLINE= 'DECLINE';
+    const STATUS_ACCEPT = 'ACCEPT';
+    const STATUS_REFER = 'REFER';
+    const STATUS_CANCEL = 'CANCEL';
+    const STATUS_FULFILLED = 'FULFILLED';
+    const STATUS_SUBMITTED = 'SUBMITTED';
+    const STATUS_VERIFIED = 'VERIFIED';
+
     public function __construct($response)
     {
         $data = $this->xmlResponseToArray($response);
