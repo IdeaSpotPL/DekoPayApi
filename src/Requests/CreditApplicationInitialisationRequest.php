@@ -188,9 +188,6 @@ class CreditApplicationInitialisationRequest implements RequestInterface
         $this->addParameter('Consumer[Title]', $this->getConsumerTitle());
         $this->addParameter('Consumer[Forename]', $this->getConsumerForename());
         $this->addParameter('Consumer[Surname]', $this->getConsumerSurname());
-        $this->addParameter('Consumer[DateOfBirthDay]', $this->getConsumerDateOfBirthDay()->format('d'));
-        $this->addParameter('Consumer[DateOfBirthMonth]', $this->getConsumerDateOfBirthDay()->format('m'));
-        $this->addParameter('Consumer[DateOfBirthYear]', $this->getConsumerDateOfBirthDay()->format('Y'));
         $this->addParameter('Consumer[Gender]', $this->getConsumerGender());
         $this->addParameter('Consumer[MaritalStatus]', $this->getConsumerMaritalStatus());
         $this->addParameter('Consumer[MobileNumber]', $this->getConsumerMobileNumber());
@@ -205,6 +202,12 @@ class CreditApplicationInitialisationRequest implements RequestInterface
         $this->addParameter('Consumer[Bank][AccountNumber]', $this->getConsumerBankAccountNumber());
         $this->addParameter('Consumer[Bank][SortCode]', $this->getConsumerBankSortCode());
         $this->addParameter('Consumer[Bank][Years]', $this->getConsumerBankYears());
+
+        if ($this->getConsumerDateOfBirthDay() !== null) {
+            $this->addParameter('Consumer[DateOfBirthDay]', $this->getConsumerDateOfBirthDay()->format('d'));
+            $this->addParameter('Consumer[DateOfBirthMonth]', $this->getConsumerDateOfBirthDay()->format('m'));
+            $this->addParameter('Consumer[DateOfBirthYear]', $this->getConsumerDateOfBirthDay()->format('Y'));
+        }
 
         return $this->parameters;
     }
