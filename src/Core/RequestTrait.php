@@ -13,7 +13,7 @@ trait RequestTrait
 
     public function addParameter($name, $value)
     {
-        if ($value) {
+        if ($value !== null && $value !== false && $value !== '') {
             $this->parameters[$name] = $value;
         }
     }
