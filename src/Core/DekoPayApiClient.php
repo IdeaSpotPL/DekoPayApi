@@ -16,6 +16,7 @@ use IdeaSpot\DekoPayApi\Response\CreditApplicationResumeLinkResponse;
 use IdeaSpot\DekoPayApi\Response\FulfilmentResponse;
 use IdeaSpot\DekoPayApi\Response\ResendCsnResponse;
 use IdeaSpot\DekoPayApi\Response\StatusResponse;
+use IdeaSpot\DekoPayApi\WebIntegration\FinanceCalculator;
 
 class DekoPayApiClient
 {
@@ -95,6 +96,11 @@ class DekoPayApiClient
     public function amendment(AmendmentRequest $request)
     {
         return new AmendmentResponse($this->createRequest($request));
+    }
+
+    public function getFinanceCalculator()
+    {
+        return new FinanceCalculator($this->apiKey);
     }
 
     private function createRequest(RequestInterface $request)

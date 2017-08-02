@@ -7,6 +7,9 @@
         }
     ],
     "autoload": {
-        "psr-4": {"IdeaSpot\\DekoPayApi\\": "src/"}
+        "psr-4": {
+          "IdeaSpot\\DekoPayApi\\": "src/",
+          "IdeaSpot\\DekoPayApiTests\\": "tests/"
+        }
     }
 }
