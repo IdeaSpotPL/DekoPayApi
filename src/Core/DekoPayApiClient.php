@@ -20,11 +20,12 @@ use IdeaSpot\DekoPayApi\WebIntegration\FinanceCalculator;
 
 class DekoPayApiClient
 {
-    private $interface, $apiKey;
+    private $interfaceBackend, $interfaceFrontEnd, $apiKey;
 
-    public function __construct($interface, $apiKey)
+    public function __construct($interfaceBackend, $interfaceFrontEnd, $apiKey)
     {
-        $this->interface = $interface;
+        $this->interfaceBackend = $interfaceBackend;
+        $this->interfaceFrontEnd = $interfaceFrontEnd;
         $this->apiKey = $apiKey;
     }
 
@@ -100,7 +101,7 @@ class DekoPayApiClient
 
     public function getFinanceCalculator()
     {
-        return new FinanceCalculator($this->apiKey);
+        return new FinanceCalculator($this->interfaceFrontEnd, $this->apiKey);
     }
 
     private function createRequest(RequestInterface $request)
@@ -109,7 +110,7 @@ class DekoPayApiClient
         $parameters['Identification[api_key]'] = $this->apiKey;
         $parameters['api_key'] = $this->apiKey;
 
-        $sender = new Sender($this->interface, $parameters);
+        $sender = new Sender($this->interfaceBackend, $parameters);
         $sender->request();
 
         if ($sender->isFailed()) {

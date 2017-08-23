@@ -8,16 +8,16 @@ class FinanceCalculator
 {
     private $productLists;
 
-    public function __construct($apiKey)
+    public function __construct($interface, $apiKey)
     {
         $this->productLists = array();
 
-        $this->loadData($apiKey);
+        $this->loadData($interface, $apiKey);
     }
 
-    private function loadData($apiKey)
+    private function loadData($interface, $apiKey)
     {
-        $sender = new Sender("https://test.dekopay.com/js_api/FinanceDetails.js.php?api_key=$apiKey", array());
+        $sender = new Sender("{$interface}js_api/FinanceDetails.js.php?api_key=$apiKey", array());
 
         if (preg_match_all('/case[ |]"([\w\s\d\-.]*)":([\w\s.=;%\-()\']*)break;/', $sender->request(), $productMatches)) {
 
